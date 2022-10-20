@@ -15,7 +15,7 @@ int main()
     cars[2] = "camri";
 
 
-// iterating over an array
+    // iterating over an array
     double prices[] = {5.00, 7.50, 9.99};
     
     for(int i=0; i< sizeof(prices)/sizeof(double); i++){
