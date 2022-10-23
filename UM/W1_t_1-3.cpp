@@ -50,26 +50,24 @@ int main()
     using std::cout;
     using std::endl;
 
-    // Tutorial q-3
-    // myClass myObject1(5);
-    // myClass myObject2(7);
-
-    // // myObject1.printX();
-    // // myObject2.printX();
-    // // myObject1.printCount();
-    // // myObject2.printCount();
+    myClass myObject1(5);
+    myClass myObject2(7);
 
     // myObject1.printX();
-    // cout << endl;
-    // myObject1.incrementCount();
-    // myObject1.printCount();
-    // cout << endl;
-    // myObject2.printCount();
-    // cout << endl;
     // myObject2.printX();
-    // cout << endl;
+    // myObject1.printCount();
+    // myObject2.printCount();
 
-    //Tutorial q-4
+    myObject1.printX();
+    cout << endl;
+    myObject1.incrementCount();
+    myObject1.printCount();
+    cout << endl;
+    myObject2.printCount();
+    cout << endl;
+    myObject2.printX();
+    cout << endl;
+
 
     return 0;
 }
