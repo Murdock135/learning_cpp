@@ -2,18 +2,13 @@
 
 int main()
 {
-    int x; //declaration
-    x = 5; //assignment
+    int a = 2; int b = 3;
+    double remainder = (double)b / (double)a;
+    std::cout<<remainder << '\n';
 
-    int y=6;
-    int sum = x+y;
-    int trunc_int = 7.5; //this will be truncated to 7 when outputted
-    double gpa = 3.8; // this won't be truncated if outputted
-    std::string name = "Bro";
+    double c = 3;
+    std::cout << c;
 
-    // std::cout<<x<<"\n"<<y<<"\n";
-    // std::cout<<sum;
-    std::cout<<name;
-
+    
     return 0;
 }

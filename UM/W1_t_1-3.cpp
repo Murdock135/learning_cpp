@@ -2,19 +2,15 @@
 
 class myClass
 {
-public:
-//Function to output x.
-void printX();
-//Function to output count.
-void printCount();
-//Function to increment count.
-void incrementCount();
-//constructor with default parameters
-//Postcondition set x as a;
-myClass(int a = 0);
-private:
-int x;
-int count;
+    public:
+        void printX();
+        void printCount();
+        void incrementCount();
+        myClass(int a = 0);
+        
+    private:
+        int x;
+        int count;
 };
 
 myClass::myClass(int a)
@@ -37,13 +33,6 @@ void myClass::incrementCount()
     count++;
 }
 
-class romanType
-{
-public:
-    romanType(int num);
-    void printNum();
-    void printRoman();
-};
 
 int main()
 {
