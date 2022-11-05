@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Classes interface and implementation\main.cpp(12,23): error C2661: 'Time::Time': no overloaded function takes 3 arguments
+  Time.cpp
+  Generating Code...
