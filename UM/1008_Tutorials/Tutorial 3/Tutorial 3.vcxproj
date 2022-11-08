@@ -129,6 +129,11 @@
   <ItemGroup>
     <ClCompile Include="Tutorial 3.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="discover.h" />
+    <ClInclude Include="lineType.h" />
+    <ClInclude Include="pointType.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -130,7 +130,10 @@
     <ClCompile Include="Composition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Date.h" />
     <ClInclude Include="Employee.h" />
+    <ClInclude Include="Location.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
