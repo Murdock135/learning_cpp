@@ -32,5 +32,11 @@
     <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Employee_friend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Employer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

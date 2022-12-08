@@ -1,0 +1,5 @@
+﻿  Tutorial 2.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008_Tutorials\Tutorial 2\die.h(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008_Tutorials\Tutorial 2\ticTacToe.h(92,23): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008_Tutorials\Tutorial 2\ticTacToe.h(152,7): warning C4553: '==': result of expression not used; did you intend '='?
+  Tutorial 2.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008_Tutorials\Tutorial 2\x64\Debug\Tutorial 2.exe

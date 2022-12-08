@@ -13,6 +13,11 @@ public:
 	void setMinute(int);
 	void setSecond(int);
 
+	Time &setHour2(int);
+	Time &setMin2(int);
+	Time &setSec2(int);
+
+
 	// get functions
 	int getHour();
 	int getMinute();
@@ -22,4 +27,5 @@ public:
 private:
 	int hour, minute, second;
 };
+
 

@@ -4,15 +4,37 @@
 #include <iostream>
 #include "Date.h"
 #include "Employee.h"
+#include "Point.h"
+#include "Location.h"
+#include "Employee_friend.h"
+#include "Employer.h"
 using namespace std;
 
 int main()
 {
+    cout << "EXAMPLE 2 " << endl;
+    //EXAMPLE 2
     Date birth(7, 24, 2000);
     Date hire(3, 12, 2020);
     Employee manager("Bob", "Blue", birth, hire);
     cout << endl;
     manager.print();
+    cout << '\v' << endl;
+
+    
+    //EXAMPLE 1
+    cout << "EXAMPLE 1 " << endl;
+    Point p1(2, 7);
+    Point p2(5, 9);
+    Location loc(p1, p2);
+
+    cout << "Distance between p1 and p2 = ";
+    cout << loc.distance();
+
+    cout << '\v' << endl;
+    //SUBTOPIC: FRIEND FUNCTIONS
+    Employee_friend e1(5);
+    Employee_friend e2(10);
 
     return 0;
 }

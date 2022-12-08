@@ -84,7 +84,7 @@ void ticTacToe::request_move() {
 		this->request_move(); //request move again (recursion)!!!
 	}
 
-	else if (board[row][column] == 0) {
+	if (board[row][column] == 0) {
 		if (moveCount % 2 != 0) { //odd, hence player1
 			board[row][column] = 1;
 		}

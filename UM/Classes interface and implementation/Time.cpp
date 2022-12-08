@@ -26,13 +26,34 @@ void Time::setHour(int h) {
 
 }
 
+void Time::setMinute(int m) {
+	minute = m;
+
+}
+
+
 int Time::getHour() {
 	return hour;
 }
+
+int Time::getMinute() {
+	return minute;
+}
+
 
 void Time::printStandard() {
 	cout << ((hour == 0) || (hour == 12) ? 12 : hour % 12) << ":"
 		<< setfill('0') << setw(2) << minute << ":" << setw(2) <<
 		second << (hour < 12 ? " AM" : " PM") << endl;
 
+}
+
+Time &Time::setHour2(int h) {
+	hour = h;
+	return *this;
+}
+
+Time &Time::setMin2(int m) {
+	minute = m;
+	return *this;
 }

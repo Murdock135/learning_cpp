@@ -127,12 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="setAge.cpp" />
     <ClCompile Include="Tutorial 3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="discover.h" />
+    <ClInclude Include="course.h" />
     <ClInclude Include="lineType.h" />
     <ClInclude Include="pointType.h" />
+    <ClInclude Include="student.h" />
+    <ClInclude Include="undergrad.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

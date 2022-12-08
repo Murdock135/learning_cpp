@@ -132,6 +132,8 @@
   <ItemGroup>
     <ClInclude Include="Date.h" />
     <ClInclude Include="Employee.h" />
+    <ClInclude Include="Employee_friend.h" />
+    <ClInclude Include="Employer.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="Point.h" />
   </ItemGroup>

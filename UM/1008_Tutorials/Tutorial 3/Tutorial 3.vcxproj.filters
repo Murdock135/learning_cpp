@@ -18,6 +18,9 @@
     <ClCompile Include="Tutorial 3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="setAge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="discover.h">
@@ -27,6 +30,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lineType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="undergrad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,10 +2,34 @@
 //
 
 #include <iostream>
+#include "pointType.h"
+#include "lineType.h"
+//#include "student.h"
+//#include "undergrad.h"
+#include "course.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    //q2
+    //pointType p1(5, 3), p2(2, 8), p3(5, 3), p4(5, 10);
+    //lineType l1(p1, p2), l2(p3, p4);
+
+    //cout << "Distance between p1 and p2 = ";
+    //cout << p1.distance(p2) << endl; //5.83
+
+    //cout << "slope of l1 = ";
+    //cout << l1.calcSlope() << endl;//-1.66
+    //cout << "slope of l2 = ";
+    //l2.vertOrhori();
+    //cout << l2.calcSlope();
+
+    //q3
+    //undergrad u1;
+    //cout << u1.getName();
+
+    course c1("Programming 2", "kie1008");
+    c1.
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

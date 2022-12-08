@@ -7,7 +7,7 @@ using namespace std;
 class Employee {
 
 public:
-	Employee(const string& fname, const string& lname, const Date& birthDate, const Date& hireDate);
+	Employee( string fname,  string lname,  Date birthDate,  Date hireDate);
 	void print() const;
 private:
 	string firstname, lastname;
@@ -15,7 +15,7 @@ private:
 	const Date hireDate;
 };
 
-Employee::Employee(const string& fname, const string& lname, const Date& birthDate, const Date& hireDate):
+Employee::Employee( string fname, string lname, Date birthDate, Date hireDate):
 	firstname(fname),
 	lastname(lname),
 	birthdate(birthDate),

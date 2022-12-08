@@ -12,27 +12,27 @@ private:
 public:
 	lineType(pointType&, pointType&);
 	void vertOrhori();
-	void getSlope();
+	double calcSlope();
 	string equation();
 };
 
-lineType::lineType(pointType& p1, pointType& p2) {
-	this->p1 = p1;
-	this->p2 = p2;
-}
+lineType::lineType(pointType& p1, pointType& p2) :
+	p1(p1),
+	p2(p2)
+{}
 
 void lineType::vertOrhori() {
 	if (p1.getx() == p2.getx()) {
 		vertical = true;
 	}
-	else if (slope == double(0)) {
+	else if (p1.gety() == p2.gety()) {
 		horizontal = true;
 	}
 	else
 		cout << "line is slanted" << endl;
 }
 
-void lineType::getSlope() {
+double lineType::calcSlope() {
 	double slope;
 	double x1 = (double)p1.getx();
 	double y1 = (double)p1.gety();
@@ -42,6 +42,7 @@ void lineType::getSlope() {
 	slope = (y2 - y1) / (x2 - x1);
 
 	this->slope = slope;
+	return slope;
 }
 
 string lineType::equation() {
@@ -54,8 +55,11 @@ string lineType::equation() {
 	if (vertical == true) {
 		eq = "x = " + to_string(p1.getx());
 	}
+	else if (horizontal == true) {
+		eq = "y = " + to_string(p1.gety());
+	}
 	else
-		eq = to_string(y) + " = " + to_string(slope) + "*" + to_string(x);
+		eq = to_string(y) + " = " + to_string(slope) + "*" + to_string(x) + " + " + to_string(c);
 
 	return eq;
 }

@@ -4,7 +4,7 @@ using namespace std;
 
 class Point {
 public:
-	Point(int = 0, int = 0);
+	Point(int = 0, int = 0); //default parameters cuz later location is going to use this class
 	int getX() const;
 	int getY() const;
 	void print() const;
