@@ -9,14 +9,38 @@ using namespace std;
 int main()
 {
     IntegerSet set1(5);
+
     bool a[] = { false,false,true };
     int size = sizeof(a) / sizeof(a[0]);
     IntegerSet set2(a,size);
+
+    cout << "Test PrintSet function" << endl;
+    cout << "Set 1: ";
     set1.printSet();
     cout << endl;
-    cout << "------------------" << endl;
+    cout << "Set 2: ";
     set2.printSet();
-    
+    cout << endl;
+
+    cout << "------------------" << endl;
+
+    cout << "Test setval" << endl;
+    set1.setVal(2, true);
+    cout << "Set 1 after setting 2nd place to true: ";
+    set1.printSet();
+    cout << endl;
+
+    cout << "------------------" << endl;
+    cout << "Test [] operator" << endl;
+    cout << "The value at 2nd place: ";
+    cout << set1[2];
+    cout << endl;
+
+    cout << "------------------" << endl;
+    cout << "Test insert() function: " << endl;
+    cout << "After inserting 10, set 1 becomes: ";
+    set1.insert(10);
+    set1.printSet();
     return 0;
 }
 

@@ -1,2 +1,4 @@
 ﻿  Assignment1.cpp
-  Assignment1.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008 past papers\Assignment1\x64\Debug\Assignment1.exe
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008 assignments\Assignment1\IntegerSet.h(68): warning C4715: 'IntegerSet::insert': not all control paths return a value
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008 assignments\Assignment1\IntegerSet.h(65): warning C4172: returning address of local variable or temporary: newSet
+  Assignment1.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1008 assignments\Assignment1\x64\Debug\Assignment1.exe
