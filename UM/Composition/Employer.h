@@ -5,6 +5,7 @@ using namespace std;
 
 class Employer {
 public:
+	Employer() {};
 	int getCount(Employee_friend& e);
 };
 

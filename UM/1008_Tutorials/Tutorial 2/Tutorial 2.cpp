@@ -18,25 +18,25 @@ int main()
 	//cout << "After adding " << add << "days, it is : " << calcDay;
 
 	//Q4
-	//die dice[10]; //instantiating  10 objects
-	//int usersum, count = 0 ;
-	//cout << "Desired sum: ";
-	//cin >> usersum;
-	//cout << endl;
+	die dice[10]; //instantiating  10 objects
+	int usersum, count = 0 ;
+	cout << "Desired sum: ";
+	cin >> usersum;
+	cout << endl;
 
-	//for (int iteration = 0; iteration < 100; iteration++) {
-	//	int rollSum = 0;
+	for (int iteration = 0; iteration < 100; iteration++) {
+		int rollSum = 0;
 
-	//	for (int i = 0; i < 10; i++) {
-	//		dice[i].roll();
-	//		int roll = dice[i].getNum();
-	//		rollSum += roll;
-	//	}
-	//	//cout << rollSum << endl;
-	//	if (rollSum == usersum)
-	//		count++;
-	//}
-	//cout << usersum << " was rolled " << count << " times";
+		for (int i = 0; i < 10; i++) {
+			dice[i].roll();
+			int roll = dice[i].getNum();
+			rollSum += roll;
+		}
+		//cout << rollSum << endl;
+		if (rollSum == usersum)
+			count++;
+	}
+	cout << usersum << " was rolled " << count << " times";
 
 
 	//Q5

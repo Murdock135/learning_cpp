@@ -1,0 +1,4 @@
+﻿  Diamond_Problem.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Diamond_Problem\Person.h(17,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Diamond_Problem\Person.h(28,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Diamond_Problem.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Diamond_Problem\x64\Debug\Diamond_Problem.exe

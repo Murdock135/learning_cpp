@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="Operator Overloading.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Counter.h" />
+    <ClInclude Include="Point.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

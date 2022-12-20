@@ -1,2 +1,7 @@
 ﻿  Composition.cpp
-  Composition.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\x64\Debug\Composition.exe
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\Employer.h(9,15): error C2061: syntax error: identifier 'Employee_friend'
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\Employer.h(12,39): error C2761: 'int Employer::getCount(void)': redeclaration of member is not allowed
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\Employer.h(12,24): error C2065: 'Employee_friend': undeclared identifier
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\Employer.h(12,41): error C2065: 'e': undeclared identifier
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\Employer.h(12,44): error C2143: syntax error: missing ';' before '{'
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\Composition\Employer.h(12,44): error C2447: '{': missing function header (old-style formal list?)
