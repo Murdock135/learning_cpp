@@ -186,10 +186,6 @@ int main()
 
     set6.isEqualTo(set3);
 
-
-
-
-
     return 0;
 }
 

@@ -5,7 +5,7 @@ using namespace std;
 
 class IntegerSet {
 private:
-	bool *dynamicSet;
+	bool* dynamicSet;
 	int size;
 public:
 	IntegerSet();
@@ -187,6 +187,5 @@ void IntegerSet::isEqualTo(IntegerSet& otherSet) {
 		cout << "The sets are equal" << endl;
 	else
 		cout << "The sets are NOT equal" << endl;
-
 }
 
