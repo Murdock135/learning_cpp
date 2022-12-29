@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+bool gameValidity = false;
+
 string cointoss() {
     int result = 1 + rand() % 2;
     string heads = "heads";
@@ -18,8 +20,7 @@ string cointoss() {
     }
 }
 
-bool checkGuessAndOfferValidity(string guess, int offer, int candies) {
-    bool validity = true;
+void checkGuessValidity(string guess) {
     string validGuesses[2] = { "heads","tails" };
 
     int count = 0;
@@ -28,27 +29,26 @@ bool checkGuessAndOfferValidity(string guess, int offer, int candies) {
             ++count;
     }
     
-    if (count==0) {
-        cout << "Please guess either heads or tails (case sensitive)" << endl;
-        validity = false;
+    if (count == 0) {
+        gameValidity = false;
     }
-    else if (offer > candies) {
-        cout << "Cannot offer more than you have, which is " << candies << " candies" << endl;
-        validity = false;
-    }
-
-    return validity;
+    else
+        gameValidity = true;
+    //else if (offer > candies) {
+    //    cout << "Cannot offer more than you have, which is " << candies << " candies" << endl;
+    //    validity = false;
+    //}
 }
 
-int getOffer() {
+int getOffer(int candies) {
     int offer = -1;
     while (offer == -1) {
         cout << "How many candies do you want to offer: ";
         cin >> offer;
-        while (cin.fail()) {   // could also be “while (!cin) {”
+        while ((cin.fail()) || (offer>candies)) {
             cin.clear();
             cin.ignore(1000, '\n');
-            cerr << "You have to enter an integer: ";
+            cerr << "You have to enter an integer, which has to be less than the number of candies you have: ";
             cin >> offer;
         }
     }
@@ -60,27 +60,25 @@ string getGuess() {
     cout << "Guess heads or tails (case sensitive): ";
     cin >> guess;
     cout << endl;
-    return guess;
+    checkGuessValidity(guess);
+    if (gameValidity == false) {
+        cout << "Please guess either heads or tails (case sensitive)" << endl;
+        guess = getGuess();
+    }
+    
+     return guess;
 }
 
 int guessingGame(string playerName, int candies, int count = 1) {
 
-    bool gameValidity = true;
 
-
-    while ((gameValidity == true) && (count <= 3)) {
+    while (count <= 3) {
         cout << endl;
         cout << "Round " << count << ". You currently have " << candies << " candies" << endl;
         
-        int offer = getOffer();
+        int offer = getOffer(candies);
         string guess = getGuess();
 
-        //check for valid guess or not
-        gameValidity = checkGuessAndOfferValidity(guess, offer, candies);
-        if (gameValidity == false)
-            candies = guessingGame(playerName, candies, count);
-
-        //check if guess is correct
         string coinResult = cointoss();
         if (coinResult == guess) {
             candies = candies + offer;
@@ -96,12 +94,27 @@ int guessingGame(string playerName, int candies, int count = 1) {
 }
 
 void checkWinner(string p1n, string p2n, string p3n, int p1Candies, int p2Candies, int p3Candies) {
-    if ((p1Candies > p2Candies) && (p1Candies > p3Candies))
-        cout << p1n << " has won! SHABBASSH MANTAP GG" << endl;
-    if ((p2Candies > p1Candies) && (p2Candies > p3Candies))
-        cout << p2n << " has won! SHABBAS MANTAP GG" << endl;
-    if ((p3Candies > p1Candies) && (p3Candies > p2Candies))
-        cout << p2n << " has won! SHABBASSH MANTAP GG" << endl;
+    if (p1Candies > p2Candies)
+    {
+        if (p1Candies > p3Candies)
+            cout << p1n << " has won! GG" << endl;
+        else if (p1Candies < p3Candies)
+            cout << p3n << " has won! GG" << endl;
+        else if (p1Candies == p3Candies)
+            cout << "It's a tie between " << p1n << " and " << p3n << endl;
+    }
+    else if (p2Candies > p1Candies)
+    {
+        if (p2Candies > p3Candies)
+            cout << p2n << " has won! GG" << endl;
+        else if (p2Candies < p3Candies)
+            cout << p3n << " has won! GG" << endl;
+        else if (p2Candies == p3Candies)
+            cout << "It's a tie between " << p2n << " and " << p3n << endl;
+    }
+    else if (p1Candies == p2Candies)
+        cout << "It's a tie between " << p1n << " and " << p2n << endl;
+
 }
 
 
@@ -123,7 +136,7 @@ int main()
     cout << "Welcome, " << p1n << " " << p2n << " and " << p3n << endl;
     
     cout << "--------------------------------------------------------" << endl;
-    cout << "AND THE GAME STARTS" << endl;
+    cout << "The game has started" << endl;
     cout << "\v";
 
     cout << "Hello " << p1n << " it's your turn." << endl;
