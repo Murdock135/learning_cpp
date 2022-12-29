@@ -1,0 +1,4 @@
+﻿  1004 assignment 1.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 1\1004 assignment 1\1004 assignment 1.cpp(111,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 1\1004 assignment 1\1004 assignment 1.cpp(19): warning C4715: 'cointoss': not all control paths return a value
+  1004 assignment 1.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 1\1004 assignment 1\x64\Debug\1004 assignment 1.exe
