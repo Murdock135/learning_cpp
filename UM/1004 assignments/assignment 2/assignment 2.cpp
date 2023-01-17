@@ -9,7 +9,7 @@
 using namespace std;
 
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
-string filePath2 = "";
+string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
 string studentGroups[100][7] = {};
 
 void menu1(string, string arrayData[][7], int rows);
@@ -17,7 +17,7 @@ void menu2(string arrayData[][7], int rows);
 
 int main()
 {
-    menu1(filePath1, studentGroups, 100);
+    menu1(filePath2, studentGroups, 100);
     menu2(studentGroups, 100);
 
     return 0;
@@ -25,7 +25,7 @@ int main()
 
 void menu1(string filePath, string arrayData[][7], int rows) {
     ifstream StudentListcsv;
-    StudentListcsv.open(filePath1);
+    StudentListcsv.open(filePath);
 
     string line = "";
     int i = 0;
