@@ -1,3 +1,3 @@
 ﻿  assignment 2.cpp
-C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\assignment 2.cpp(126,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\assignment 2.cpp(129,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   assignment 2.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\x64\Debug\assignment 2.exe

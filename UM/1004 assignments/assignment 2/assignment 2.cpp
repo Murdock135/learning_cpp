@@ -12,7 +12,7 @@ using namespace std;
 void menu1(string, string arrayData[][7], int rows);
 void menu2(string arrayData[][7], const int rows);
 void menu3(string arrayData[][7], const int rows);
-void menu4(string randomizedList[][7], const int rows);
+void menu4();
 int getListSize(string arrayData[][7], const int rows);
 bool isMaxed(string group[], int lastIndex);
 
@@ -49,6 +49,10 @@ int main()
     cout << "After randomizing sequent " << endl;
     cout << "List size = " << getListSize(studentGroups, 100) << endl;
     menu2(studentGroups, 100);
+    cout << "---------------------------------------" << endl;
+    cout << "After assigning groups" << endl;
+    menu4();
+
     return 0;
 }
 
@@ -150,9 +154,51 @@ void menu3(string arrayData[][7], const int rows) {
 
 void menu4() {
     int ListLength = getListSize(studentGroups, 100);
-    for (int i = 0; i < ListLength; i++) {
 
+    for (int i = 0; i < ListLength; i++) {
+        string currentStudentID = studentGroups[i][0];
+
+        //assigning groups for KIE1001 and KIE1002
+        if (isMaxed(KIE1001g1,29) == false) {
+            KIE1001g1[i] = currentStudentID;
+
+            if (isMaxed(KIE1002g1, 29) == false) {
+                KIE1002g1[i] = currentStudentID;
+            }
+        }
+        else {
+            if (isMaxed(KIE1001g2, 29) == false) {
+                KIE1001g2[i] = currentStudentID;
+
+                if (isMaxed(KIE1002g2, 29) == false) {
+                    KIE1002g2[i] = currentStudentID;
+                }
+            }
+
+        }
+
+        //assigning groups for KIE1003 and KIE1004
+        if (isMaxed(KIE1003g1, 29) == false) {
+            KIE1003g1[i] = currentStudentID;
+
+            if (isMaxed(KIE1004g1, 29) == false) {
+                KIE1004g1[i] = currentStudentID;
+            }
+        }
+        else {
+            if (isMaxed(KIE1003g2, 29) == false) {
+                KIE1003g2[i] = currentStudentID;
+
+                if (isMaxed(KIE1004g2, 29) == false) {
+                    KIE1004g2[i] = currentStudentID;
+                }
+            }
+        }
     }
+}
+
+void menu5() {
+
 }
 
 
