@@ -9,16 +9,33 @@
 #include <cstdlib>
 
 using namespace std;
-
-string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
-string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
-string studentGroups[100][7] = {}; //100 rows because of assumption that there are a maximum of a 100 students
-
 void menu1(string, string arrayData[][7], int rows);
 void menu2(string arrayData[][7], const int rows);
 void menu3(string arrayData[][7], const int rows);
+void menu4(string randomizedList[][7], const int rows);
 int getListSize(string arrayData[][7], const int rows);
+bool isMaxed(string group[], int lastIndex);
 
+string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
+string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
+string studentGroups[100][7] = {}; //Initialize student List array. 100 rows because of assumption that there are a maximum of a 100 students
+//initialize groups
+string KIE1001g1[30] = {};
+string KIE1002g1[30] = {};
+string KIE1003g1[30] = {};
+string KIE1004g1[30] = {};
+string KIE1001g2[30] = {};
+string KIE1002g2[30] = {};
+string KIE1003g2[30] = {};
+string KIE1004g2[30] = {};
+string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
+
+
+
+//int main() {
+//    cout << groups[1][0][3];
+//    return 0;
+//}
 int main()
 {
     cout << "The program to allocate groups to students has started!" << endl;
@@ -33,6 +50,24 @@ int main()
     cout << "List size = " << getListSize(studentGroups, 100) << endl;
     menu2(studentGroups, 100);
     return 0;
+}
+
+int menuSelection() {
+    int i;
+    cout << "Enter 1 to load csv file.\nEnter 2 to display data.\nEnter 3 to randomize the sequence of data and assign groups.\
+        \nEnter 4 to assign timetable to students.\nEnter 5 to display timetable for all students.\nEnter 6 to display number\
+         of students in each group.\nEnter 7 to exit program.";
+    cin >> i;
+    if ((i << 1) || (i >> 7))
+        i = menuSelection();
+    return i;
+}
+
+bool isMaxed(string group[], int lastIndex) {
+    bool maxed = false;
+    if (group[lastIndex] != "")
+        maxed = true;
+    return maxed;
 }
 
 int getListSize(string arrayData[][7], int rows) {
@@ -87,6 +122,7 @@ void menu2(string arrayData[][7], const int rows) {
 }
 
 void menu3(string arrayData[][7], const int rows) {
+    //part 1: Randomize sequence
     srand(time(0));
     int listLength = getListSize(arrayData, rows);
     for (int i = 0; i < listLength; i++) {
@@ -109,15 +145,15 @@ void menu3(string arrayData[][7], const int rows) {
             arrayData[i][c] = tempRecord[c];
         }
     }
+
 }
 
-int menuSelection() {
-    int i;
-    cout << "Enter 1 to load csv file.\nEnter 2 to display data.\nEnter 3 to randomize the sequence of data and assign groups.\
-        \nEnter 4 to assign timetable to students.\nEnter 5 to display timetable for all students.\nEnter 6 to display number\
-         of students in each group.\nEnter 7 to exit program.";
-    cin >> i;
-    if ((i << 1)||(i>>7))
-        i = menuSelection();
-    return i;
+void menu4() {
+    int ListLength = getListSize(studentGroups, 100);
+    for (int i = 0; i < ListLength; i++) {
+
+    }
 }
+
+
+
