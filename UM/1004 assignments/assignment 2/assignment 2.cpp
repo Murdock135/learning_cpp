@@ -12,22 +12,37 @@ using namespace std;
 
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
 string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
-string studentGroups[100][7] = {};
+string studentGroups[100][7] = {}; //100 rows because of assumption that there are a maximum of a 100 students
 
 void menu1(string, string arrayData[][7], int rows);
 void menu2(string arrayData[][7], const int rows);
 void menu3(string arrayData[][7], const int rows);
+int getListSize(string arrayData[][7], const int rows);
 
 int main()
 {
+    cout << "The program to allocate groups to students has started!" << endl;
+
     menu1(filePath2, studentGroups, 100);
     cout << "Before randomizing sequent" << endl;
+    cout << "List size = "<< getListSize(studentGroups, 100) << endl;
     menu2(studentGroups, 100);
     cout << "---------------------------------------" << endl;
     menu3(studentGroups, 100);
     cout << "After randomizing sequent " << endl;
+    cout << "List size = " << getListSize(studentGroups, 100) << endl;
     menu2(studentGroups, 100);
     return 0;
+}
+
+int getListSize(string arrayData[][7], int rows) {
+    int length = 0;
+    for (int i = 0; i < rows; i++) {
+        if (arrayData[i][0] == "")
+            break;
+        ++length;
+    }
+    return length;
 }
 
 void menu1(string filePath, string arrayData[][7], const int rows) {
@@ -62,7 +77,8 @@ void menu1(string filePath, string arrayData[][7], const int rows) {
 }
 
 void menu2(string arrayData[][7], const int rows) {
-    for (int i = 0; i < rows; i++) {
+    int listLength = getListSize(arrayData, rows); //get the length of the array
+    for (int i = 0; i < listLength; i++) {
         for (int j = 0; j < 7; j++) {
             cout << arrayData[i][j] << " ";
         }
@@ -72,11 +88,12 @@ void menu2(string arrayData[][7], const int rows) {
 
 void menu3(string arrayData[][7], const int rows) {
     srand(time(0));
-    for (int i = 0; i < rows/2; i++) {
-        int randomIndex = rand() % rows;
+    int listLength = getListSize(arrayData, rows);
+    for (int i = 0; i < listLength; i++) {
+        int randomIndex = rand() % listLength;
         string tempRecord[7]; //make a temporary array to store record that will be replaced
 
-        if (arrayData[randomIndex][0] != "") { //check if the record at random
+        if (arrayData[randomIndex][0] != "") { //check if the record at random index is empty or not
             //store the record that will be replaced later
             for (int c = 0; c < 7; c++) {
                 tempRecord[c] = arrayData[randomIndex][c];
@@ -92,4 +109,15 @@ void menu3(string arrayData[][7], const int rows) {
             arrayData[i][c] = tempRecord[c];
         }
     }
+}
+
+int menuSelection() {
+    int i;
+    cout << "Enter 1 to load csv file.\nEnter 2 to display data.\nEnter 3 to randomize the sequence of data and assign groups.\
+        \nEnter 4 to assign timetable to students.\nEnter 5 to display timetable for all students.\nEnter 6 to display number\
+         of students in each group.\nEnter 7 to exit program.";
+    cin >> i;
+    if ((i << 1)||(i>>7))
+        i = menuSelection();
+    return i;
 }
