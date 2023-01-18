@@ -13,6 +13,7 @@ void menu1(string, string arrayData[][7], int rows);
 void menu2(string arrayData[][7], const int rows);
 void menu3(string arrayData[][7], const int rows);
 void menu4();
+void menu5();
 int getListSize(string arrayData[][7], const int rows);
 bool isMaxed(string group[], int lastIndex);
 
@@ -28,14 +29,16 @@ string KIE1001g2[30] = {};
 string KIE1002g2[30] = {};
 string KIE1003g2[30] = {};
 string KIE1004g2[30] = {};
-string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
 
 
 
 //int main() {
-//    cout << groups[1][0][3];
+//    string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
+//
+//    cout << groups[0][0];
 //    return 0;
 //}
+
 int main()
 {
     cout << "The program to allocate groups to students has started!" << endl;
@@ -52,6 +55,8 @@ int main()
     cout << "---------------------------------------" << endl;
     cout << "After assigning groups" << endl;
     menu4();
+    cout << "---------------------------------------" << endl;
+    menu5();
 
     return 0;
 }
@@ -62,15 +67,18 @@ int menuSelection() {
         \nEnter 4 to assign timetable to students.\nEnter 5 to display timetable for all students.\nEnter 6 to display number\
          of students in each group.\nEnter 7 to exit program.";
     cin >> i;
-    if ((i << 1) || (i >> 7))
+    if ((i < 1) || (i > 7))
         i = menuSelection();
     return i;
 }
 
 bool isMaxed(string group[], int lastIndex) {
-    bool maxed = false;
-    if (group[lastIndex] != "")
+    bool maxed;
+    if (group[lastIndex] != "") {
         maxed = true;
+    }
+    else
+         maxed = false;
     return maxed;
 }
 
@@ -154,24 +162,30 @@ void menu3(string arrayData[][7], const int rows) {
 
 void menu4() {
     int ListLength = getListSize(studentGroups, 100);
+    int KIE1001g1_index = 0, KIE1002g1_index = 0, KIE1003g1_index = 0, KIE1004g1_index = 0, KIE1001g2_index = 0, \
+        KIE1002g2_index = 0, KIE1003g2_index = 0, KIE1004g2_index = 0;
 
-    for (int i = 0; i < ListLength; i++) {
+    for (int i = 0; i < ListLength; i++) { //this loop iterates through the studentList
         string currentStudentID = studentGroups[i][0];
 
         //assigning groups for KIE1001 and KIE1002
         if (isMaxed(KIE1001g1,29) == false) {
-            KIE1001g1[i] = currentStudentID;
+            KIE1001g1[KIE1001g1_index] = currentStudentID;
+            ++KIE1001g1_index;
 
             if (isMaxed(KIE1002g1, 29) == false) {
-                KIE1002g1[i] = currentStudentID;
+                KIE1002g1[KIE1002g1_index] = currentStudentID;
+                ++KIE1002g1_index;
             }
         }
         else {
             if (isMaxed(KIE1001g2, 29) == false) {
-                KIE1001g2[i] = currentStudentID;
+                KIE1001g2[KIE1001g2_index] = currentStudentID;
+                ++KIE1001g2_index;
 
                 if (isMaxed(KIE1002g2, 29) == false) {
-                    KIE1002g2[i] = currentStudentID;
+                    KIE1002g2[KIE1002g2_index] = currentStudentID;
+                    ++KIE1002g2_index;
                 }
             }
 
@@ -179,18 +193,22 @@ void menu4() {
 
         //assigning groups for KIE1003 and KIE1004
         if (isMaxed(KIE1003g1, 29) == false) {
-            KIE1003g1[i] = currentStudentID;
+            KIE1003g1[KIE1003g1_index] = currentStudentID;
+            ++KIE1003g1_index;
 
             if (isMaxed(KIE1004g1, 29) == false) {
-                KIE1004g1[i] = currentStudentID;
+                KIE1004g1[KIE1004g1_index] = currentStudentID;
+                ++KIE1004g1_index;
             }
         }
         else {
             if (isMaxed(KIE1003g2, 29) == false) {
-                KIE1003g2[i] = currentStudentID;
-
+                KIE1003g2[KIE1003g2_index] = currentStudentID;
+                ++KIE1003g2_index;
                 if (isMaxed(KIE1004g2, 29) == false) {
-                    KIE1004g2[i] = currentStudentID;
+                    KIE1004g2[KIE1004g2_index] = currentStudentID;
+                    ++KIE1004g2_index;
+
                 }
             }
         }
@@ -198,7 +216,18 @@ void menu4() {
 }
 
 void menu5() {
+    string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
+    string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"KIE1001g2","KIE1002g2","KIE1003g2","KIE1004g2"} };
+    
+    for (int row = 0; row < 2; row++) {
+        for (int group = 0; group < 4; group++) {
+            cout << groupNames[row][group] << " students:" << endl;;
 
+                for (int student = 0; student < 30; student++) {
+                    cout << groups[row][group][student] << endl;
+                }
+        }
+    }
 }
 
 
