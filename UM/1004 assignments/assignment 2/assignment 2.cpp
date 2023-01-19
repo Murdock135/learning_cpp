@@ -17,6 +17,7 @@ void menu5();
 int getListSize(string arrayData[][7], const int rows);
 bool isMaxed(string group[], int lastIndex);
 void groupingAlgo();
+bool isIn(string studentID, string group[]);
 
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
 string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
@@ -31,6 +32,10 @@ string KIE1001g2[30] = {};
 string KIE1002g2[30] = {};
 string KIE1003g2[30] = {};
 string KIE1004g2[30] = {};
+
+string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
+string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"KIE1001g2","KIE1002g2","KIE1003g2","KIE1004g2"} };
+
 
 
 
@@ -57,6 +62,7 @@ int main()
     cout << "---------------------------------------" << endl;
     cout << "After assigning groups" << endl;
     groupingAlgo();
+    menu4();
     cout << "---------------------------------------" << endl;
     menu5();
 
@@ -218,12 +224,19 @@ void menu3(string arrayData[][7], const int rows) {
 }
 
 void menu4() {
-
+    //List out the studentID's who did not get a group for the respective courses
+    string courses[4] = {"KIE1001", "KIE1002","KIE1003","KIE1004"};
+    for (int group = 0; group < 4; group++) {
+        cout << courses[group] << "could not fit in the following students:" << endl;
+        for (int student = 0; student < 100; student++) {
+            string currentStudent = students[student][0];
+            if ((isIn(currentStudent, groups[0][group]) == false) && (isIn(currentStudent, groups[1][group]) == false))
+                cout << currentStudent << endl;
+        }
+    }
 }
 
 void menu5() {
-    string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
-    string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"KIE1001g2","KIE1002g2","KIE1003g2","KIE1004g2"} };
     
     for (int row = 0; row < 2; row++) {
         for (int group = 0; group < 4; group++) {
@@ -234,6 +247,15 @@ void menu5() {
                 }
         }
     }
+}
+
+bool isIn(string studentID, string group[]) {
+    bool found = false;
+    for (int i = 0; i < 30; i++) {
+        if (group[i].find(studentID)!=string::npos)
+            found = true;
+    }
+    return found;
 }
 
 
