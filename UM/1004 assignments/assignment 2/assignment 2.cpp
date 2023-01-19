@@ -16,10 +16,12 @@ void menu4();
 void menu5();
 int getListSize(string arrayData[][7], const int rows);
 bool isMaxed(string group[], int lastIndex);
+void groupingAlgo();
 
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
 string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
-string studentGroups[100][7] = {}; //Initialize student List array. 100 rows because of assumption that there are a maximum of a 100 students
+string students[100][7] = {}; //Initialize student List array. 100 rows because of assumption that there are a maximum of a 100 students
+string studentsAssigned[100][5] = {};
 //initialize groups
 string KIE1001g1[30] = {};
 string KIE1002g1[30] = {};
@@ -43,18 +45,18 @@ int main()
 {
     cout << "The program to allocate groups to students has started!" << endl;
 
-    menu1(filePath2, studentGroups, 100);
+    menu1(filePath2, students, 100);
     cout << "Before randomizing sequent" << endl;
-    cout << "List size = "<< getListSize(studentGroups, 100) << endl;
-    menu2(studentGroups, 100);
+    cout << "List size = "<< getListSize(students, 100) << endl;
+    menu2(students, 100);
     cout << "---------------------------------------" << endl;
-    menu3(studentGroups, 100);
+    menu3(students, 100);
     cout << "After randomizing sequent " << endl;
-    cout << "List size = " << getListSize(studentGroups, 100) << endl;
-    menu2(studentGroups, 100);
+    cout << "List size = " << getListSize(students, 100) << endl;
+    menu2(students, 100);
     cout << "---------------------------------------" << endl;
     cout << "After assigning groups" << endl;
-    menu4();
+    groupingAlgo();
     cout << "---------------------------------------" << endl;
     menu5();
 
@@ -92,84 +94,16 @@ int getListSize(string arrayData[][7], int rows) {
     return length;
 }
 
-void menu1(string filePath, string arrayData[][7], const int rows) {
-    ifstream StudentListcsv;
-    StudentListcsv.open(filePath);
-
-    string line = "";
-    int i = 0;
-    while (getline(StudentListcsv, line)) {
-        string studentID, KIE1001group, KIE1002group, KIE1003group, KIE1004group, otherGroup1, otherGroup2;
-
-        stringstream record(line);
-        getline(record, studentID, ',');
-        getline(record, KIE1001group, ',');
-        getline(record, KIE1002group, ',');
-        getline(record, KIE1003group, ',');
-        getline(record, KIE1004group, ',');
-        getline(record, otherGroup1, ',');
-        getline(record, otherGroup2, ',');
-        
-        
-        studentGroups[i][0] = studentID;
-        studentGroups[i][1] = KIE1001group;
-        studentGroups[i][2] = KIE1002group;
-        studentGroups[i][3] = KIE1003group;
-        studentGroups[i][4] = KIE1004group;
-        studentGroups[i][5] = otherGroup1;
-        studentGroups[i][6] = otherGroup2;
-        ++i;
-        line = "";
-    }
-}
-
-void menu2(string arrayData[][7], const int rows) {
-    int listLength = getListSize(arrayData, rows); //get the length of the array
-    for (int i = 0; i < listLength; i++) {
-        for (int j = 0; j < 7; j++) {
-            cout << arrayData[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
-void menu3(string arrayData[][7], const int rows) {
-    //part 1: Randomize sequence
-    srand(time(0));
-    int listLength = getListSize(arrayData, rows);
-    for (int i = 0; i < listLength; i++) {
-        int randomIndex = rand() % listLength;
-        string tempRecord[7]; //make a temporary array to store record that will be replaced
-
-        if (arrayData[randomIndex][0] != "") { //check if the record at random index is empty or not
-            //store the record that will be replaced later
-            for (int c = 0; c < 7; c++) {
-                tempRecord[c] = arrayData[randomIndex][c];
-            }
-        }
-        //insert current row's record into the random row/index
-        for (int c = 0; c < 7; c++) {
-            arrayData[randomIndex][c] = arrayData[i][c];
-        }
-
-        //insert the record at random index into the current index to complete the swapping
-        for (int c = 0; c < 7; c++) {
-            arrayData[i][c] = tempRecord[c];
-        }
-    }
-
-}
-
-void menu4() {
-    int ListLength = getListSize(studentGroups, 100);
+void groupingAlgo() {
+    int ListLength = getListSize(students, 100);
     int KIE1001g1_index = 0, KIE1002g1_index = 0, KIE1003g1_index = 0, KIE1004g1_index = 0, KIE1001g2_index = 0, \
         KIE1002g2_index = 0, KIE1003g2_index = 0, KIE1004g2_index = 0;
 
     for (int i = 0; i < ListLength; i++) { //this loop iterates through the studentList
-        string currentStudentID = studentGroups[i][0];
+        string currentStudentID = students[i][0];
 
         //assigning groups for KIE1001 and KIE1002
-        if (isMaxed(KIE1001g1,29) == false) {
+        if (isMaxed(KIE1001g1, 29) == false) {
             KIE1001g1[KIE1001g1_index] = currentStudentID;
             ++KIE1001g1_index;
 
@@ -213,6 +147,78 @@ void menu4() {
             }
         }
     }
+}
+
+void menu1(string filePath, string arrayData[][7], const int rows) {
+    ifstream StudentListcsv;
+    StudentListcsv.open(filePath);
+
+    string line = "";
+    int i = 0;
+    while (getline(StudentListcsv, line)) {
+        string studentID, KIE1001group, KIE1002group, KIE1003group, KIE1004group, otherGroup1, otherGroup2;
+
+        stringstream record(line);
+        getline(record, studentID, ',');
+        getline(record, KIE1001group, ',');
+        getline(record, KIE1002group, ',');
+        getline(record, KIE1003group, ',');
+        getline(record, KIE1004group, ',');
+        getline(record, otherGroup1, ',');
+        getline(record, otherGroup2, ',');
+        
+        
+        students[i][0] = studentID;
+        students[i][1] = KIE1001group;
+        students[i][2] = KIE1002group;
+        students[i][3] = KIE1003group;
+        students[i][4] = KIE1004group;
+        students[i][5] = otherGroup1;
+        students[i][6] = otherGroup2;
+        ++i;
+        line = "";
+    }
+}
+
+void menu2(string arrayData[][7], const int rows) {
+    int listLength = getListSize(arrayData, rows); //get the length of the array
+    for (int i = 0; i < listLength; i++) {
+        for (int j = 0; j < 7; j++) {
+            cout << arrayData[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void menu3(string arrayData[][7], const int rows) {
+    //part 1: Randomize sequence
+    srand(time(0));
+    int listLength = getListSize(arrayData, rows);
+    for (int i = 0; i < listLength; i++) {
+        int randomIndex = rand() % listLength;
+        string tempRecord[7]; //make a temporary array to store record that will be replaced
+
+        if (arrayData[randomIndex][0] != "") { //check if the record at random index is empty or not
+            //store the record that will be replaced later
+            for (int c = 0; c < 7; c++) {
+                tempRecord[c] = arrayData[randomIndex][c];
+            }
+        }
+        //insert current row's record into the random row/index
+        for (int c = 0; c < 7; c++) {
+            arrayData[randomIndex][c] = arrayData[i][c];
+        }
+
+        //insert the record at random index into the current index to complete the swapping
+        for (int c = 0; c < 7; c++) {
+            arrayData[i][c] = tempRecord[c];
+        }
+    }
+
+}
+
+void menu4() {
+
 }
 
 void menu5() {
