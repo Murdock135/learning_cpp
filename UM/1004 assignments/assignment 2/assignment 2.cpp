@@ -7,6 +7,7 @@
 #include <sstream>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 void menu1(string, string arrayData[][7], int rows);
@@ -22,7 +23,7 @@ bool isIn(string studentID, string group[]);
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
 string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
 string students[100][7] = {}; //Initialize student List array. 100 rows because of assumption that there are a maximum of a 100 students
-string studentsAssigned[100][5] = {};
+string randomizedStudents[100][7] = {};
 //initialize groups
 string KIE1001g1[30] = {};
 string KIE1002g1[30] = {};
@@ -35,7 +36,7 @@ string KIE1004g2[30] = {};
 
 string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
 string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"KIE1001g2","KIE1002g2","KIE1003g2","KIE1004g2"} };
-
+string courses[4] = { "KIE1001", "KIE1002","KIE1003","KIE1004" };
 
 
 
@@ -225,7 +226,6 @@ void menu3(string arrayData[][7], const int rows) {
 
 void menu4() {
     //List out the studentID's who did not get a group for the respective courses
-    string courses[4] = {"KIE1001", "KIE1002","KIE1003","KIE1004"};
     for (int group = 0; group < 4; group++) {
         cout << courses[group] << "could not fit in the following students:" << endl;
         for (int student = 0; student < 100; student++) {
@@ -237,16 +237,37 @@ void menu4() {
 }
 
 void menu5() {
-    
-    for (int row = 0; row < 2; row++) {
-        for (int group = 0; group < 4; group++) {
-            cout << groupNames[row][group] << " students:" << endl;;
-
-                for (int student = 0; student < 30; student++) {
-                    cout << groups[row][group][student] << endl;
-                }
-        }
+    int gap = 10;
+    cout << setw(gap) << " ";
+    for (int course = 0; course < 4; course++) {
+        cout << setw(gap) << courses[course];
     }
+    //for (int row = 0; row < 2; row++) {
+    //    for (int group = 0; group < 4; group++) {
+    //        cout << groupNames[row][group] << " students:" << endl;;
+
+    //            for (int student = 0; student < 30; student++) {
+    //                cout << groups[row][group][student] << endl;
+    //            }
+    //    }
+    //}
+    
+    cout << endl;
+    for (int i = 0; i < 100; i++) {
+        string currentStudent = students[i][0];
+        cout << currentStudent;
+        for (int group = 0; group < 4; group++) {
+                if (isIn(currentStudent, groups[0][group]) == true)
+                    cout << setw(gap) << "g1";
+                else if (isIn(currentStudent, groups[1][group]) == true)
+                    cout << setw(gap) << "g2";
+                else
+                    cout << setw(gap) << "--";
+                //check KIE1001
+        }
+        cout << endl;
+    }
+    
 }
 
 bool isIn(string studentID, string group[]) {
