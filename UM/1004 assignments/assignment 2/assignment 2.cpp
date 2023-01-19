@@ -53,7 +53,7 @@ int main()
 
     menu1(filePath2, students, 100);
     cout << "Before randomizing sequent" << endl;
-    cout << "List size = "<< getListSize(students, 100) << endl;
+    cout << "List size = " << getListSize(students, 100) << endl;
     menu2(students, 100);
     cout << "---------------------------------------" << endl;
     menu3(students, 100);
@@ -87,7 +87,7 @@ bool isMaxed(string group[], int lastIndex) {
         maxed = true;
     }
     else
-         maxed = false;
+        maxed = false;
     return maxed;
 }
 
@@ -173,8 +173,8 @@ void menu1(string filePath, string arrayData[][7], const int rows) {
         getline(record, KIE1004group, ',');
         getline(record, otherGroup1, ',');
         getline(record, otherGroup2, ',');
-        
-        
+
+
         students[i][0] = studentID;
         students[i][1] = KIE1001group;
         students[i][2] = KIE1002group;
@@ -227,7 +227,7 @@ void menu3(string arrayData[][7], const int rows) {
 void menu4() {
     //List out the studentID's who did not get a group for the respective courses
     for (int group = 0; group < 4; group++) {
-        cout << courses[group] << "could not fit in the following students:" << endl;
+        cout << courses[group] << " could not fit in the following students:" << endl;
         for (int student = 0; student < 100; student++) {
             string currentStudent = students[student][0];
             if ((isIn(currentStudent, groups[0][group]) == false) && (isIn(currentStudent, groups[1][group]) == false))
@@ -251,33 +251,30 @@ void menu5() {
     //            }
     //    }
     //}
-    
+
     cout << endl;
     for (int i = 0; i < 100; i++) {
         string currentStudent = students[i][0];
         cout << currentStudent;
         for (int group = 0; group < 4; group++) {
-                if (isIn(currentStudent, groups[0][group]) == true)
-                    cout << setw(gap) << "g1";
-                else if (isIn(currentStudent, groups[1][group]) == true)
-                    cout << setw(gap) << "g2";
-                else
-                    cout << setw(gap) << "--";
-                //check KIE1001
+            if (isIn(currentStudent, groups[0][group]) == true)
+                cout << setw(gap) << "g1";
+            else if (isIn(currentStudent, groups[1][group]) == true)
+                cout << setw(gap) << "g2";
+            else
+                cout << setw(gap) << "--";
+            //check KIE1001
         }
         cout << endl;
     }
-    
+
 }
 
 bool isIn(string studentID, string group[]) {
     bool found = false;
     for (int i = 0; i < 30; i++) {
-        if (group[i].find(studentID)!=string::npos)
+        if (group[i].find(studentID) != string::npos)
             found = true;
     }
     return found;
 }
-
-
-
