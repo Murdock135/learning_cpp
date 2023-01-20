@@ -271,7 +271,8 @@ void menu5() {
     }
 
     cout << endl;
-    for (int i = 0; i < 100; i++) {
+    int listLength = getListSize(students,100);
+    for (int i = 0; i < listLength; i++) {
         string currentStudent = students[i][0];
         cout << currentStudent;
         for (int group = 0; group < 4; group++) {
