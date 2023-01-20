@@ -12,18 +12,22 @@
 using namespace std;
 void menu1(string, string arrayData[][7], int rows);
 void menu2(string arrayData[][7], const int rows);
-void menu3(string arrayData[][7], const int rows);
+void menu3(string arrayData[][7], string randomizedArray[][7], const int rows);
 void menu4();
 void menu5();
 int getListSize(string arrayData[][7], const int rows);
 bool isMaxed(string group[], int lastIndex);
-void groupingAlgo();
+void groupingAlgo(string array[][7]);
 bool isIn(string studentID, string group[]);
+bool isIn2(string studentID, string array[][7], int rows);
+int* createRandomSequence(const int size);
+
 
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
 string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
 string students[100][7] = {}; //Initialize student List array. 100 rows because of assumption that there are a maximum of a 100 students
 string randomizedStudents[100][7] = {};
+
 //initialize groups
 string KIE1001g1[30] = {};
 string KIE1002g1[30] = {};
@@ -42,8 +46,11 @@ string courses[4] = { "KIE1001", "KIE1002","KIE1003","KIE1004" };
 
 //int main() {
 //    string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
-//
+
+
 //    cout << groups[0][0];
+// 
+
 //    return 0;
 //}
 
@@ -56,16 +63,23 @@ int main()
     cout << "List size = " << getListSize(students, 100) << endl;
     menu2(students, 100);
     cout << "---------------------------------------" << endl;
-    menu3(students, 100);
+    menu3(students,randomizedStudents, 100);
     cout << "After randomizing sequent " << endl;
     cout << "List size = " << getListSize(students, 100) << endl;
-    menu2(students, 100);
+    menu2(randomizedStudents, 100);
     cout << "---------------------------------------" << endl;
     cout << "After assigning groups" << endl;
-    groupingAlgo();
+    groupingAlgo(randomizedStudents);
     menu4();
     cout << "---------------------------------------" << endl;
     menu5();
+    // 
+    //const int s = 5;
+
+    //int* a = createRandomSequence(s);
+    //for (int i = 0; i < s; i++) {
+    //    cout << a[i] << endl;
+    //}
 
     return 0;
 }
@@ -101,13 +115,13 @@ int getListSize(string arrayData[][7], int rows) {
     return length;
 }
 
-void groupingAlgo() {
-    int ListLength = getListSize(students, 100);
+void groupingAlgo(string array[][7]) {
+    int ListLength = getListSize(array, 100);
     int KIE1001g1_index = 0, KIE1002g1_index = 0, KIE1003g1_index = 0, KIE1004g1_index = 0, KIE1001g2_index = 0, \
         KIE1002g2_index = 0, KIE1003g2_index = 0, KIE1004g2_index = 0;
 
     for (int i = 0; i < ListLength; i++) { //this loop iterates through the studentList
-        string currentStudentID = students[i][0];
+        string currentStudentID = array[i][0];
 
         //assigning groups for KIE1001 and KIE1002
         if (isMaxed(KIE1001g1, 29) == false) {
@@ -156,6 +170,31 @@ void groupingAlgo() {
     }
 }
 
+int* createRandomSequence(const int s) {
+    int* randomSequence = new int[s];
+    srand(time(0));
+    int i = 0;
+
+    while(i<s) {
+        bool repeated = false; //set the bool to false every iteration
+        int r = rand() % s;
+
+        for (int index = 0; index < i; index++) {
+            if (randomSequence[index] == r) {
+                repeated = true;
+                break;
+            }
+        }
+
+        if (repeated == false) {
+            randomSequence[i] = r;
+            ++i;
+        }
+
+    }
+    return randomSequence;
+}
+
 void menu1(string filePath, string arrayData[][7], const int rows) {
     ifstream StudentListcsv;
     StudentListcsv.open(filePath);
@@ -197,31 +236,19 @@ void menu2(string arrayData[][7], const int rows) {
     }
 }
 
-void menu3(string arrayData[][7], const int rows) {
-    //part 1: Randomize sequence
-    srand(time(0));
-    int listLength = getListSize(arrayData, rows);
+void menu3(string arrayData[][7],string randomizedArray[][7], const int rows) {
+    const int listLength = getListSize(arrayData, rows);
+    cout << listLength << endl;
+    int* randomSequence = createRandomSequence(listLength);
+    int index;
     for (int i = 0; i < listLength; i++) {
-        int randomIndex = rand() % listLength;
-        string tempRecord[7]; //make a temporary array to store record that will be replaced
-
-        if (arrayData[randomIndex][0] != "") { //check if the record at random index is empty or not
-            //store the record that will be replaced later
-            for (int c = 0; c < 7; c++) {
-                tempRecord[c] = arrayData[randomIndex][c];
-            }
-        }
-        //insert current row's record into the random row/index
+        index = randomSequence[i];
+ 
         for (int c = 0; c < 7; c++) {
-            arrayData[randomIndex][c] = arrayData[i][c];
+            randomizedArray[i][c] = arrayData[index][c];
         }
-
-        //insert the record at random index into the current index to complete the swapping
-        for (int c = 0; c < 7; c++) {
-            arrayData[i][c] = tempRecord[c];
-        }
+        
     }
-
 }
 
 void menu4() {
@@ -242,15 +269,6 @@ void menu5() {
     for (int course = 0; course < 4; course++) {
         cout << setw(gap) << courses[course];
     }
-    //for (int row = 0; row < 2; row++) {
-    //    for (int group = 0; group < 4; group++) {
-    //        cout << groupNames[row][group] << " students:" << endl;;
-
-    //            for (int student = 0; student < 30; student++) {
-    //                cout << groups[row][group][student] << endl;
-    //            }
-    //    }
-    //}
 
     cout << endl;
     for (int i = 0; i < 100; i++) {
@@ -263,7 +281,6 @@ void menu5() {
                 cout << setw(gap) << "g2";
             else
                 cout << setw(gap) << "--";
-            //check KIE1001
         }
         cout << endl;
     }
@@ -274,6 +291,15 @@ bool isIn(string studentID, string group[]) {
     bool found = false;
     for (int i = 0; i < 30; i++) {
         if (group[i].find(studentID) != string::npos)
+            found = true;
+    }
+    return found;
+}
+
+bool isIn2(string studentID, string array[][7], int rows) {
+    bool found = false;
+    for (int i = 0; i < rows; i++) {
+        if (array[i][0].find(studentID) != string::npos)
             found = true;
     }
     return found;
