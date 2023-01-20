@@ -121,7 +121,7 @@ int main() {
         cin >> response;
         menu7(response);
 
-    default: cout << "Invalid, please choose a valid option.";
+    default: cout << "Invalid, please choose a valid option." << endl;
         cin.clear();
         main();
         break;
@@ -137,7 +137,8 @@ int getInput() {
     while(cin.fail()) {
         cin.clear();
         cin.ignore(1000, '\n');
-        cerr << "You have to enter an integer: ";
+        cerr << "You have to enter an integer: " << endl;
+        main();
     }
     return i;
 }
@@ -390,7 +391,7 @@ void menu7(string response) {
     }
     else
     {
-        cout << "invalid, please write the number of menu again.\n";
+        cout << "Please choose one of the options.\n";
         main();
     }
 }
