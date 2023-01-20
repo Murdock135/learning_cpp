@@ -1,5 +1,5 @@
+// Team members: Saifeddine Mejri S2162835, Muhamamd Ashraf Bin Mohd Saifullizan 17153641, Qazi Zarif Ul Islam (17143014/1)
 // assignment 2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <string>
@@ -10,6 +10,7 @@
 #include <iomanip>
 
 using namespace std;
+// List of all functions used in our code
 void menu1(string, string arrayData[][7], int rows);
 void menu2(string arrayData[][7], const int rows);
 void menu3(string arrayData[][7], string randomizedArray[][7], const int rows);
@@ -25,11 +26,11 @@ bool isIn(string studentID, string group[]);
 bool isIn2(string studentID, string array[][7], int rows);
 int* createRandomSequence(const int size);
 
-
+//Important note: Please change the filepath of the csv files accordingly.
 string filePath1 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList.csv";
 string filePath2 = "C:\\Users\\kople\\Documents\\Personal Git repos\\learning_c++\\UM\\1004 assignments\\assignment 2\\StudentList2.csv";
 string students[100][7] = {}; //Initialize student List array. 100 rows because of assumption that there are a maximum of a 100 students
-string randomizedStudents[100][7] = {};
+string randomizedStudents[100][7] = {};// This array is filled up by menu 3, a randomized form of the students array.
 
 //initialize groups
 string KIE1001g1[30] = {};
@@ -46,31 +47,9 @@ string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"
 string courses[4] = { "KIE1001", "KIE1002","KIE1003","KIE1004" };
 string response;
 
-
-//int main()
-//{
-//    cout << "The program to allocate groups to students has started!" << endl;
-//
-//    menu1(filePath2, students, 100);
-//    cout << "Before randomizing sequent" << endl;
-//    cout << "List size = " << getListSize(students, 100) << endl;
-//    menu2(students, 100);
-//    cout << "---------------------------------------" << endl;
-//    menu3(students,randomizedStudents, 100);
-//    cout << "After randomizing sequent " << endl;
-//    cout << "List size = " << getListSize(students, 100) << endl;
-//    menu2(randomizedStudents, 100);
-//    cout << "---------------------------------------" << endl;
-//    cout << "After assigning groups" << endl;
-//    groupingAlgo(randomizedStudents);
-//    menu4();
-//    cout << "---------------------------------------" << endl;
-//    menu5();
-//
-//    return 0;
-//}
-
+// design the menu message
 int main() {
+
     cout << "===================================================== \n";
     cout << " \t\tMENU \t \n";
     cout << "Enter 1 to load csv file.\nEnter 2 to display data.\nEnter 3 to randomize the sequence of data and assign groups.\
@@ -78,28 +57,28 @@ int main() {
     cout << "Enter: ";
     int i = getInput();
 
+    //switch statement allowing the user(s) to pick the menu function they want.
     switch (i)
     {
-    case 1: 
+    case 1:
         menu1(filePath2, students, 100);
         main();
         break;
 
-
-    case 2: 
+    case 2:
         menu2(students, 100);
         cout << "---------------------------------------" << endl;
         main();
         break;
 
-    case 3:   
+    case 3:
         menu3(students, randomizedStudents, 100);
         cout << "After randomizing sequent " << endl;
         cout << "List size = " << getListSize(students, 100) << endl;
         main();
         break;
 
-    case 4: 
+    case 4:
         groupingAlgo(randomizedStudents);
         cout << "After assigning groups" << endl;
         menu4();
@@ -107,7 +86,7 @@ int main() {
         main();
         break;
 
-    case 5: 
+    case 5:
         menu5();
         main();
         break;
@@ -116,10 +95,11 @@ int main() {
         main();
         break;
 
-    case 7: 
+    case 7:
         cout << "Exit Application? Press N or Y " << endl;
         cin >> response;
         menu7(response);
+        break;
 
     default: cout << "Invalid, please choose a valid option." << endl;
         cin.clear();
@@ -128,52 +108,63 @@ int main() {
 
     }
 
-
     return i;
 }
+
+// function to get input, this is used because cin does not work properly on its own in a loop/recurring function.
 int getInput() {
     int i;
     cin >> i;
-    while(cin.fail()) {
+
+    while (cin.fail()) {
         cin.clear();
         cin.ignore(1000, '\n');
         cerr << "You have to enter an integer: " << endl;
         main();
     }
+
     return i;
 }
 
-
+// checks if course groups are full
 bool isMaxed(string group[], int lastIndex) {
     bool maxed;
+
     if (group[lastIndex] != "") {
         maxed = true;
     }
     else
         maxed = false;
+
     return maxed;
 }
 
 int getListSize(string arrayData[][7], int rows) {
+    // calculates size of array in terms of elements present. 
     int length = 0;
+
     for (int i = 0; i < rows; i++) {
+
         if (arrayData[i][0] == "")
             break;
+
         ++length;
     }
     return length;
 }
 
 int getListSize1D(string arrayData[]) {
+    // same function as the one above but for 1 dimensional arrays
     int i = 0;
-    while(arrayData[i]!="") {
+
+    while (arrayData[i] != "") {
         ++i;
     }
     return i;
 }
 
-
 void groupingAlgo(string array[][7]) {
+    // this is the algorithm to assign groups in menu 4, menu 4 is used to display the students who didn't have a place in either of the groups
     int ListLength = getListSize(array, 100);
     int KIE1001g1_index = 0, KIE1002g1_index = 0, KIE1003g1_index = 0, KIE1004g1_index = 0, KIE1001g2_index = 0, \
         KIE1002g2_index = 0, KIE1003g2_index = 0, KIE1004g2_index = 0;
@@ -229,11 +220,12 @@ void groupingAlgo(string array[][7]) {
 }
 
 int* createRandomSequence(const int s) {
+    //this function creates a random sequence (array) of integers of size s
     int* randomSequence = new int[s];
     srand(time(0));
     int i = 0;
 
-    while(i<s) {
+    while (i < s) {
         bool repeated = false; //set the bool to false every iteration
         int r = rand() % s;
 
@@ -254,6 +246,7 @@ int* createRandomSequence(const int s) {
 }
 
 void menu1(string filePath, string arrayData[][7], const int rows) {
+    //menu 1, uses ifstream to read csv file and store it in the students array. Important note: Please modify the file name in case of any differences.
     ifstream StudentListcsv;
     StudentListcsv.open(filePath);
 
@@ -268,9 +261,8 @@ void menu1(string filePath, string arrayData[][7], const int rows) {
         getline(record, KIE1002group, ',');
         getline(record, KIE1003group, ',');
         getline(record, KIE1004group, ',');
-        getline(record, otherGroup1, ',');
-        getline(record, otherGroup2, ',');
-
+        getline(record, otherGroup1, ','); //stores extra course that isn't in the timetable
+        getline(record, otherGroup2, ','); //stores extra course that isn't in the timetable
 
         students[i][0] = studentID;
         students[i][1] = KIE1001group;
@@ -285,6 +277,7 @@ void menu1(string filePath, string arrayData[][7], const int rows) {
 }
 
 void menu2(string arrayData[][7], const int rows) {
+    //function used to display the student array after it has been loaded with data from the csv source file.
     int listLength = getListSize(arrayData, rows); //get the length of the array
     for (int i = 0; i < listLength; i++) {
         for (int j = 0; j < 7; j++) {
@@ -294,18 +287,18 @@ void menu2(string arrayData[][7], const int rows) {
     }
 }
 
-void menu3(string arrayData[][7],string randomizedArray[][7], const int rows) {
+void menu3(string arrayData[][7], string randomizedArray[][7], const int rows) {
+    //this function randomizes the sequence that is found in the original csv file.
     const int listLength = getListSize(arrayData, rows);
-    cout << listLength << endl;
     int* randomSequence = createRandomSequence(listLength);
     int index;
     for (int i = 0; i < listLength; i++) {
         index = randomSequence[i];
- 
+
         for (int c = 0; c < 7; c++) {
             randomizedArray[i][c] = arrayData[index][c];
         }
-        
+
     }
 }
 
@@ -322,6 +315,7 @@ void menu4() {
 }
 
 void menu5() {
+    //lists out every student's timetable, with respect to the groups they are in for each course.
     int gap = 10;
     cout << setw(gap) << " ";
     for (int course = 0; course < 4; course++) {
@@ -329,10 +323,12 @@ void menu5() {
     }
 
     cout << endl;
-    int listLength = getListSize(students,100);
+    int listLength = getListSize(students, 100);
+
     for (int i = 0; i < listLength; i++) {
         string currentStudent = students[i][0];
         cout << currentStudent;
+
         for (int group = 0; group < 4; group++) {
             if (isIn(currentStudent, groups[0][group]) == true)
                 cout << setw(gap) << "g1";
@@ -348,39 +344,40 @@ void menu5() {
 
 void menu6() {
     //Display the number of students in Group 1 & 2 of KIE1001
-    int total_1001g1 = getListSize1D(KIE1001g1);
+    int total_1001g1 = sizeof(KIE1001g1) / sizeof(KIE1001g1[0]);
     cout << "Total Number of Students in Group 1 of KIE1001: " << total_1001g1 << endl;
 
-    int total_1001g2 = getListSize1D(KIE1001g2);
+    int total_1001g2 = sizeof(KIE1001g2) / sizeof(KIE1001g2[0]);
     cout << "Total Number of Students in Group 2 of KIE1001: " << total_1001g2 << endl;
 
     //Display the number of students in Group 1 & 2 of KIE1002
-    int total_1002g1 = getListSize1D(KIE1002g1);
+    int total_1002g1 = sizeof(KIE1002g1) / sizeof(KIE1002g1[0]);
     cout << "Total Number of Students in Group 1 of KIE1002: " << total_1002g1 << endl;
 
-    int total_1002g2 = getListSize1D(KIE1002g2);
+    int total_1002g2 = sizeof(KIE1002g2) / sizeof(KIE1002g2[0]);
     cout << "Total Number of Students in Group 2 of KIE1002: " << total_1002g2 << endl;
 
     //Display the number of students in Group 1 & 2 of KIE1003
-    int total_1003g1 = getListSize1D(KIE1003g1);
+    int total_1003g1 = sizeof(KIE1003g1) / sizeof(KIE1003g1[0]);
     cout << "Total Number of Students in Group 1 of KIE1003: " << total_1003g1 << endl;
 
 
-    int total_1003g2 = getListSize1D(KIE1003g2);
+    int total_1003g2 = sizeof(KIE1003g2) / sizeof(KIE1003g2[0]);
     cout << "Total Number of Students in Group 2 of KIE1003: " << total_1003g2 << endl;
 
 
     //Display the number of students in Group 1 & 2 of KIE1004
-    int total_1004g1 = getListSize1D(KIE1004g1);
+    int total_1004g1 = sizeof(KIE1004g1) / sizeof(KIE1004g1[0]);
     cout << "Total Number of Students in Group 1 of KIE1004: " << total_1004g1 << endl;
 
 
-    int total_1004g2 = getListSize1D(KIE1004g2);
+    int total_1004g2 = sizeof(KIE1004g2) / sizeof(KIE1004g2[0]);
     cout << "Total Number of Students in Group 2 of KIE1004: " << total_1004g2 << endl;
 
 }
 
 void menu7(string response) {
+    // function to exit the program
     if (response == "Y" || response == "y")
     {
         exit(0);
@@ -391,11 +388,14 @@ void menu7(string response) {
     }
     else
     {
-        cout << "Please choose one of the options.\n";
+        cout << "Please choose one of the options.\n";//for invalid inputs 
         main();
+
     }
 }
+
 bool isIn(string studentID, string group[]) {
+    // function to find a specific student in a 1 dimensional array.
     bool found = false;
     for (int i = 0; i < 30; i++) {
         if (group[i].find(studentID) != string::npos)
@@ -405,6 +405,7 @@ bool isIn(string studentID, string group[]) {
 }
 
 bool isIn2(string studentID, string array[][7], int rows) {
+    // similar function to the one above except this is appilicable to 2 dimensional arrays instead.
     bool found = false;
     for (int i = 0; i < rows; i++) {
         if (array[i][0].find(studentID) != string::npos)
