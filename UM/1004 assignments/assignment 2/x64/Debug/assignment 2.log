@@ -1,3 +1,4 @@
 ﻿  assignment 2.cpp
-C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\assignment 2.cpp(157,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\assignment 2.cpp(232,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\assignment 2.cpp(133): warning C4717: 'main': recursive on all control paths, function will cause runtime stack overflow
   assignment 2.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004 assignments\assignment 2\x64\Debug\assignment 2.exe

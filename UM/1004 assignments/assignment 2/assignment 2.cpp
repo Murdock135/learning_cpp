@@ -15,6 +15,9 @@ void menu2(string arrayData[][7], const int rows);
 void menu3(string arrayData[][7], string randomizedArray[][7], const int rows);
 void menu4();
 void menu5();
+void menu6();
+void menu7(string);
+int getInput();
 int getListSize(string arrayData[][7], const int rows);
 bool isMaxed(string group[], int lastIndex);
 void groupingAlgo(string array[][7]);
@@ -41,41 +44,104 @@ string KIE1004g2[30] = {};
 string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
 string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"KIE1001g2","KIE1002g2","KIE1003g2","KIE1004g2"} };
 string courses[4] = { "KIE1001", "KIE1002","KIE1003","KIE1004" };
+string response;
 
 
-int main()
-{
-    cout << "The program to allocate groups to students has started!" << endl;
+//int main()
+//{
+//    cout << "The program to allocate groups to students has started!" << endl;
+//
+//    menu1(filePath2, students, 100);
+//    cout << "Before randomizing sequent" << endl;
+//    cout << "List size = " << getListSize(students, 100) << endl;
+//    menu2(students, 100);
+//    cout << "---------------------------------------" << endl;
+//    menu3(students,randomizedStudents, 100);
+//    cout << "After randomizing sequent " << endl;
+//    cout << "List size = " << getListSize(students, 100) << endl;
+//    menu2(randomizedStudents, 100);
+//    cout << "---------------------------------------" << endl;
+//    cout << "After assigning groups" << endl;
+//    groupingAlgo(randomizedStudents);
+//    menu4();
+//    cout << "---------------------------------------" << endl;
+//    menu5();
+//
+//    return 0;
+//}
 
-    menu1(filePath2, students, 100);
-    cout << "Before randomizing sequent" << endl;
-    cout << "List size = " << getListSize(students, 100) << endl;
-    menu2(students, 100);
-    cout << "---------------------------------------" << endl;
-    menu3(students,randomizedStudents, 100);
-    cout << "After randomizing sequent " << endl;
-    cout << "List size = " << getListSize(students, 100) << endl;
-    menu2(randomizedStudents, 100);
-    cout << "---------------------------------------" << endl;
-    cout << "After assigning groups" << endl;
-    groupingAlgo(randomizedStudents);
-    menu4();
-    cout << "---------------------------------------" << endl;
-    menu5();
-
-    return 0;
-}
-
-int menuSelection() {
-    int i;
+int main() {
+    cout << "===================================================== \n";
+    cout << " \t\tMENU \t \n";
     cout << "Enter 1 to load csv file.\nEnter 2 to display data.\nEnter 3 to randomize the sequence of data and assign groups.\
-        \nEnter 4 to assign timetable to students.\nEnter 5 to display timetable for all students.\nEnter 6 to display number\
-         of students in each group.\nEnter 7 to exit program.";
-    cin >> i;
-    if ((i < 1) || (i > 7))
-        i = menuSelection();
+        \nEnter 4 to assign timetable to students.\nEnter 5 to display timetable for all students.\nEnter 6 to display number of students in each group.\nEnter 7 to exit program." << endl;
+    cout << "Enter: ";
+    int i = getInput();
+
+    switch (i)
+    {
+    case 1: 
+        menu1(filePath2, students, 100);
+        main();
+        break;
+
+
+    case 2: 
+        menu2(students, 100);
+        cout << "---------------------------------------" << endl;
+        main();
+        break;
+
+    case 3:   
+        menu3(students, randomizedStudents, 100);
+        cout << "After randomizing sequent " << endl;
+        cout << "List size = " << getListSize(students, 100) << endl;
+        main();
+        break;
+
+    case 4: 
+        groupingAlgo(randomizedStudents);
+        cout << "After assigning groups" << endl;
+        menu4();
+        cout << "---------------------------------------" << endl;
+        main();
+        break;
+
+    case 5: 
+        menu5();
+        main();
+        break;
+    case 6:
+        menu6();
+        main();
+        break;
+
+    case 7: 
+        cout << "Exit Application? Press N or Y " << endl;
+        cin >> response;
+        menu7(response);
+
+    default: cout << "Invalid, please choose a valid option.";
+        cin.clear();
+        main();
+        break;
+
+    }
+
+
     return i;
 }
+int getInput() {
+    int i;
+    cin >> i;
+    while(cin.fail()) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cerr << "You have to enter an integer: ";
+    }
+    return i;
+}
+
 
 bool isMaxed(string group[], int lastIndex) {
     bool maxed;
@@ -96,6 +162,15 @@ int getListSize(string arrayData[][7], int rows) {
     }
     return length;
 }
+
+int getListSize1D(string arrayData[]) {
+    int i = 0;
+    while(arrayData[i]!="") {
+        ++i;
+    }
+    return i;
+}
+
 
 void groupingAlgo(string array[][7]) {
     int ListLength = getListSize(array, 100);
@@ -270,6 +345,55 @@ void menu5() {
 
 }
 
+void menu6() {
+    //Display the number of students in Group 1 & 2 of KIE1001
+    int total_1001g1 = getListSize1D(KIE1001g1);
+    cout << "Total Number of Students in Group 1 of KIE1001: " << total_1001g1 << endl;
+
+    int total_1001g2 = getListSize1D(KIE1001g2);
+    cout << "Total Number of Students in Group 2 of KIE1001: " << total_1001g2 << endl;
+
+    //Display the number of students in Group 1 & 2 of KIE1002
+    int total_1002g1 = getListSize1D(KIE1002g1);
+    cout << "Total Number of Students in Group 1 of KIE1002: " << total_1002g1 << endl;
+
+    int total_1002g2 = getListSize1D(KIE1002g2);
+    cout << "Total Number of Students in Group 2 of KIE1002: " << total_1002g2 << endl;
+
+    //Display the number of students in Group 1 & 2 of KIE1003
+    int total_1003g1 = getListSize1D(KIE1003g1);
+    cout << "Total Number of Students in Group 1 of KIE1003: " << total_1003g1 << endl;
+
+
+    int total_1003g2 = getListSize1D(KIE1003g2);
+    cout << "Total Number of Students in Group 2 of KIE1003: " << total_1003g2 << endl;
+
+
+    //Display the number of students in Group 1 & 2 of KIE1004
+    int total_1004g1 = getListSize1D(KIE1004g1);
+    cout << "Total Number of Students in Group 1 of KIE1004: " << total_1004g1 << endl;
+
+
+    int total_1004g2 = getListSize1D(KIE1004g2);
+    cout << "Total Number of Students in Group 2 of KIE1004: " << total_1004g2 << endl;
+
+}
+
+void menu7(string response) {
+    if (response == "Y" || response == "y")
+    {
+        exit(0);
+    }
+    else if (response == "N" || response == "n")
+    {
+        main();
+    }
+    else
+    {
+        cout << "invalid, please write the number of menu again.\n";
+        main();
+    }
+}
 bool isIn(string studentID, string group[]) {
     bool found = false;
     for (int i = 0; i < 30; i++) {
