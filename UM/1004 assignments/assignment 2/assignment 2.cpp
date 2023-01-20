@@ -43,17 +43,6 @@ string groupNames[2][4] = { {"KIE1001g1","KIE1002g1","KIE1003g1","KIE1004g1"},{"
 string courses[4] = { "KIE1001", "KIE1002","KIE1003","KIE1004" };
 
 
-
-//int main() {
-//    string* groups[2][4] = { {KIE1001g1, KIE1002g1, KIE1003g1, KIE1004g1}, {KIE1001g2, KIE1002g2, KIE1003g2, KIE1004g2} };
-
-
-//    cout << groups[0][0];
-// 
-
-//    return 0;
-//}
-
 int main()
 {
     cout << "The program to allocate groups to students has started!" << endl;
@@ -73,13 +62,6 @@ int main()
     menu4();
     cout << "---------------------------------------" << endl;
     menu5();
-    // 
-    //const int s = 5;
-
-    //int* a = createRandomSequence(s);
-    //for (int i = 0; i < s; i++) {
-    //    cout << a[i] << endl;
-    //}
 
     return 0;
 }
