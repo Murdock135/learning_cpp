@@ -1,0 +1,3 @@
+﻿  binary_search.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\binary_search\binary_search.cpp(38,67): warning C4101: 'data1': unreferenced local variable
+  binary_search.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\binary_search\x64\Debug\binary_search.exe

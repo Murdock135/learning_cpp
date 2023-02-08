@@ -1,0 +1,3 @@
+﻿  Tutorial 8.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004_Tutorials\Tutorial 8\Tutorial 8.cpp(49,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Tutorial 8.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004_Tutorials\Tutorial 8\x64\Debug\Tutorial 8.exe

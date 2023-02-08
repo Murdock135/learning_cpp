@@ -52,8 +52,6 @@ int main()
         cout << current->data << " ";
         current = current->next;
     }
-    cout << "Last->data = " << last->data << endl;
-    cout << "Last->next =" << last->next << endl;
     cout << endl;
 
     cout << "----------------------------------------------------" << endl;
@@ -74,13 +72,38 @@ int main()
     cout << endl;
 
     //insert after node with data=2
+    //method 1
     cout << "-------------------------------------------------------" << endl;
-    cout << "insert node after node that has data = 2" << endl;
+    cout << "Insert node after node that has data = 2" << endl;
+    cout << "Text book method: " << endl;
 
+    newNode = createNode(7);
+    Node* prev = head;
+
+    while (prev->data != 2) {
+        prev = prev->next;
+    }
+
+    newNode->next = prev->next;
+    prev->next = newNode;
+
+    //traverse list
+    current = head;
+    while (current != NULL) {
+        cout << current->data << " ";
+        current = current->next;
+    }
+    cout << "Last->data = " << last->data << endl;
+    cout << "Last->next =" << last->next << endl;
+    cout << endl;
+
+
+    //method 2
+    cout << "My method: " << endl;
     newNode = createNode(10);
     current = head;
     Node* next = new Node;
-    while (current->data != 3) {
+    while (current->data != 2) {
         current = current->next;
         next = current->next;
         cout << "current->data = " << current->data << endl;
@@ -94,8 +117,32 @@ int main()
     }
     else {
         current->next = newNode;
-        newNode->next = current->next;
+        newNode->next = next;
     }
+
+    //traverse list
+    current = head;
+    while (current != NULL) {
+        cout << current->data << " ";
+        current = current->next;
+    }
+    cout << "Last->data = " << last->data << endl;
+    cout << "Last->next =" << last->next << endl;
+    cout << endl;
+
+    //insert after given node position
+    cout << "-------------------------------------------------------" << endl;
+    cout << "Insert node after position = 4" << endl;
+
+    int pos = 4;
+    newNode = createNode(15);
+    current = head;
+    for (int i = 0; i < pos - 1; i++) {
+        current = current->next;
+    }
+
+    newNode->next = current->next;
+    current->next = newNode;
 
     //traverse list
     current = head;

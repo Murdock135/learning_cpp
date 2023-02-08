@@ -1,21 +1,61 @@
-// Tutorial 8.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <stdlib.h>
+
 using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+double harmonicSeries(int N) {
+    double sum = 1;
+
+    if (N == 1) {
+        return sum;
+    }
+    else {
+        for (int i = 2; i <= N; i++) {
+            sum += 1.0 / i;
+        }
+    }
+
+    return sum;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void generateNum(int guess) {
+    int ans = 1 + rand() % 1000;
+    int lbound = 0;
+    int hbound = 1000;
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    string response = "y";
+    while ((response == "y") || (response == "Y")) {
+        for (int chance = 1; chance <= 10; chance++) {
+            if (guess == ans) {
+                cout << "You're right";
+                break;
+            }
+            else if (guess > ans) {
+                hbound = guess;
+            }
+            else
+                lbound = guess;
+
+            if (chance == 10) {
+                cout << "Do you want to play again? y/n: ";
+                cin >> response;
+            }
+        }
+
+    }
+}
+
+int main() {
+    srand(time(0));
+
+    //int n;
+    //cout << "Enter number: ";
+    //cin >> n;
+    //cout << harmonicSeries(n) << endl;
+
+    cout << "Guess a number: ";
+    int x;
+    cin >> x;
+    generateNum(x);
+    return 0;
+}
