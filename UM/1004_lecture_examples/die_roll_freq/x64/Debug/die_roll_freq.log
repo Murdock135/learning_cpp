@@ -1,0 +1,3 @@
+﻿  die_roll_freq.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004_lecture_examples\die_roll_freq\die_roll_freq.cpp(11,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  die_roll_freq.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004_lecture_examples\die_roll_freq\x64\Debug\die_roll_freq.exe

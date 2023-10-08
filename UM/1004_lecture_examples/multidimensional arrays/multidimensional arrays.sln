@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multidimensional arrays", "multidimensional arrays.vcxproj", "{46211873-0572-4BA2-AB8A-EBFCF61220CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Debug|x64.ActiveCfg = Debug|x64
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Debug|x64.Build.0 = Debug|x64
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Debug|x86.ActiveCfg = Debug|Win32
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Debug|x86.Build.0 = Debug|Win32
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Release|x64.ActiveCfg = Release|x64
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Release|x64.Build.0 = Release|x64
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Release|x86.ActiveCfg = Release|Win32
+		{46211873-0572-4BA2-AB8A-EBFCF61220CB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81D3DB21-57AA-463C-A488-9D00EFC513D1}
+	EndGlobalSection
+EndGlobal

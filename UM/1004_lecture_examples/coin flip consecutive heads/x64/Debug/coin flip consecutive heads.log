@@ -1,0 +1,3 @@
+﻿  coin flip consecutive heads.cpp
+C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004_lecture_examples\coin flip consecutive heads\coin flip consecutive heads.cpp(10,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  coin flip consecutive heads.vcxproj -> C:\Users\kople\Documents\Personal Git repos\learning_c++\UM\1004_lecture_examples\coin flip consecutive heads\x64\Debug\coin flip consecutive heads.exe
